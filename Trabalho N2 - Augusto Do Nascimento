@@ -1,0 +1,71 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define PRODUTOS 200
+#define CLIENTES 50
+
+int main() {
+    int i, numProdutos, numClientes;
+    int compra[CLIENTES];
+    float preco[PRODUTOS];
+    float total = 0;
+
+    // Trabalho de Augusto Do Nascimento
+    srand(time(NULL));
+
+
+    numProdutos = rand() % PRODUTOS + 1;
+
+
+    for (i = 0; i < numProdutos; i++) {
+        preco[i] = 5 + rand() % 96;
+    }
+
+
+    numClientes = rand() % CLIENTES + 1;
+
+
+    for (i = 0; i < numClientes; i++) {
+        compra[i] = rand() % numProdutos;
+        total += preco[compra[i]];
+    }
+
+
+         printf("========================================\n");
+         printf("         SIMULACAO DE VENDAS            \n");
+         printf("========================================\n\n");
+
+    printf("Numero de produtos: %d\n", numProdutos);
+    printf("----------------------------------------\n");
+    printf("| Codigo |   Preco (R$)  |\n");
+    printf("----------------------------------------\n");
+    for (i = 0; i < numProdutos; i++) {
+        printf("|  %4d  |     %6.2f   |\n", i, preco[i]);
+    }
+    printf("----------------------------------------\n\n");
+
+
+    printf("Numero de clientes: %d\n", numClientes);
+    printf("----------------------------------------\n");
+    printf("| Cliente | Produto |   Valor (R$) |\n");
+    printf("----------------------------------------\n");
+    for (i = 0; i < numClientes; i++) {
+        printf("|   %3d   |   %4d  |    %6.2f   |\n", i, compra[i], preco[compra[i]]);
+    }
+    printf("----------------------------------------\n");
+
+
+    printf("\nTOTAL ARRECADADO NO DIA: R$ %.2f\n", total);
+    printf("========================================\n");
+
+return 0;
+}
